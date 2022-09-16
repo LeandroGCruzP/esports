@@ -5,16 +5,14 @@ import { Shared } from './shared'
 import { GameData } from './interfaces/GameData'
 import './styles/main.css'
 import logoImg from './assets/logo.svg'
+import { api } from './services/api'
 
 export function App() {
   const [games, setGames] = React.useState<GameData[]>([])
 
   React.useEffect(() => {
-    fetch('http://172.31.118.160:3333/games')
-      .then(response => response.json())
-      .then(data => {
-        setGames(data)
-      })
+    api.get('/games')
+      .then(response => setGames(response.data))
   }, [])
 
   return (
@@ -38,10 +36,7 @@ export function App() {
 
       <Dialog.Root>
         <Shared.CreateAdBanner />
-
-        <Dialog.Portal>
-          <Shared.ModalCreateAd />
-        </Dialog.Portal>
+        <Shared.ModalCreateAd />
       </Dialog.Root>
     </div>
   )
