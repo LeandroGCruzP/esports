@@ -1,4 +1,4 @@
-import { TouchableOpacity, View, Text } from 'react-native'
+import * as Rn from 'react-native'
 import { AdData } from '../../interfaces/AdData'
 
 import { DuoInfo } from '../DuoInfo'
@@ -15,7 +15,7 @@ export function DuoCard(props: DuoCardProps) {
   const { data, onConnect } = props
 
   return (
-    <View style={styles.container} >
+    <Rn.View style={styles.container} >
       <DuoInfo label='Nome' value={data.name} />
 
       <DuoInfo label='Tempo de jogo' value={`${data.yearsPlaying} anos`} />
@@ -31,11 +31,11 @@ export function DuoCard(props: DuoCardProps) {
         colorValue={data.useVoiceChannel ? THEME.COLORS.SUCCESS : THEME.COLORS.ALERT}
       />
 
-      <TouchableOpacity style={styles.button} onPress={onConnect} >
+      <Rn.TouchableOpacity style={styles.button} onPress={onConnect} >
         <Icon.GameController color={THEME.COLORS.TEXT} size={20} />
 
-        <Text style={styles.buttonTitle} >Conectar</Text>
-      </TouchableOpacity>
-    </View>
+        <Rn.Text style={styles.buttonTitle} >Conectar</Rn.Text>
+      </Rn.TouchableOpacity>
+    </Rn.View>
   )
 }

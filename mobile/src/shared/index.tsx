@@ -3,6 +3,7 @@ import { Heading } from './Heading'
 import { Loading } from './Loading'
 import { DuoCard } from './DuoCard'
 import { DuoInfo } from './DuoInfo'
+import { DuoMatch } from './DuoMatch'
 
 export const Shared = {
   GameCard,
@@ -10,4 +11,5 @@ export const Shared = {
   Loading,
   DuoCard,
   DuoInfo,
+  DuoMatch,
 }

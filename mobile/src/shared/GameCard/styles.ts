@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native'
+import * as Rn from 'react-native'
 import { THEME } from '../../theme'
 
-export const styles = StyleSheet.create({
+export const styles = Rn.StyleSheet.create({
   container: {
     marginRight: 24,
   },

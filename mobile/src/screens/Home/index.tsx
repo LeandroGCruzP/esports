@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { FlatList, Image } from 'react-native'
+import * as Rn from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Shared } from '../../shared'
@@ -8,6 +8,7 @@ import { Layouts } from '../../layouts'
 import { GameData } from '../../interfaces/GameData'
 import { styles } from './styles'
 import logoImg from '../../assets/logo-nlw-esports.png'
+import { api } from '../../services/api'
 
 export function Home() {
   const [games, setGames] = React.useState<GameData[]>([])
@@ -15,9 +16,8 @@ export function Home() {
   const navigation = useNavigation()
 
   React.useEffect(() => {
-    fetch('http://172.31.175.225:3333/games')
-      .then(response => response.json())
-      .then(data => setGames(data))
+    api.get('/games')
+      .then(response => setGames(response.data))
   }, [])
 
   function handleOpenGame(props: GameData) {
@@ -29,11 +29,11 @@ export function Home() {
   return (
     <Layouts.Background>
       <SafeAreaView style={styles.container} >
-        <Image source={logoImg} style={styles.logo} />
+        <Rn.Image source={logoImg} style={styles.logo} />
 
         <Shared.Heading title='Encontre seu duo!' subtitle='Selecione o game que deseja jogar...' />
 
-        <FlatList
+        <Rn.FlatList
           data={games}
           keyExtractor={item => item.id}
           renderItem={({ item }) => <Shared.GameCard data={item} onPress={() => handleOpenGame(item)} />}

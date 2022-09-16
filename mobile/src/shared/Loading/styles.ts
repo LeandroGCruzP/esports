@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
+import * as Rn from 'react-native'
 
-export const styles = StyleSheet.create({
+export const styles = Rn.StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
